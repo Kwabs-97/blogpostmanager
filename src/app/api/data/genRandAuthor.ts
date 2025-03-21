@@ -1,3 +1,10 @@
+import fs from 'fs';
+import path from 'path';
+
+import axios from 'axios';
+
+
+
 const authors = [
     "John Smith",
     "Emma Wilson", 
@@ -15,3 +22,5 @@ export function generateRandomAuthor(): string {
     const randomIndex = Math.floor(Math.random() * authors.length);
     return authors[randomIndex];
 }
+
+

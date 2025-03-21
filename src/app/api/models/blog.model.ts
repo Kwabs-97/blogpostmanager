@@ -1,45 +1,43 @@
-import { Blog, BlogFormData } from "@/types";
+import { Blog } from "@/types";
+import { db } from "../data/db";
 
-export async function getBlogs() {
+const fetchBlogPosts = async () => {
     try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-        const data = await response.json();
-        return data;
+        const allPosts = await db.posts.findAll();
+        return allPosts;
     } catch (error) {
         console.error("Error fetching blogs:", error);
         throw error;
     }
 }
 
-export async function createBlog(blog: BlogFormData) {
+const createBlogPost = async (post: Blog) => {
     try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-            method: "POST",
-            body: JSON.stringify(blog),
-        });
-    } catch(error){
-        console.error("Error creating blog:", error);
+        const newPost = await db.posts.create(post);
+        return newPost;
+    } catch (error) {
+        console.error("Error creating blog post:", error);
         throw error;
     }
-};
+}
 
-export async function updateBlog(blog: Blog) {
+const updateBlogPost = async (id: number, post: Blog) => {
     try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${blog.id}`, {
-            method: "PUT",
-            body: JSON.stringify(blog),
-        });
-    } catch(error){
-        console.error("Error updating blog:", error);
+        const updatePost = await db.posts.update(id, post);
+        return updatePost;
+    } catch (error) {
+        console.error("Error updating blog post:", error);
         throw error;
     }
-};
+}
 
-export async function deleteBlog(id: number) {
+const deleteBlogPost = async (id: number) => {
     try {
-        
-    } catch(error){
-        console.error("Error deleting blog:", error);
+        const deletePost = await db.posts.delete(id);
+        return deletePost;
+    } catch (error) {
+        console.error("Error deleting blog post:", error);
         throw error;
     }
-};
+}
+export { fetchBlogPosts, createBlogPost, updateBlogPost, deleteBlogPost };
