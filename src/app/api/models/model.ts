@@ -1,4 +1,5 @@
 import { Blog, BlogFormData } from "@/types";
+import { generateRandomAuthor } from "../data/genRandAuthor";
 
 // In-memory store for blog posts
 let blogPosts: Blog[] = [];
@@ -9,14 +10,15 @@ export const fetchBlogPosts = async () => {
         const response = await fetch("https://jsonplaceholder.typicode.com/posts");
         const data = await response.json();
         
-        // Transform the data to match our Blog type
+        // Transform the data to match Blog type
         blogPosts = data.map((post: any) => ({
             id: post.id,
             title: post.title,
             body: post.body,
-            author: "Unknown", // JSONPlaceholder doesn't provide author
+            author: generateRandomAuthor(),
             createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
+            updatedAt: new Date().toISOString(),
+            category: []
         }));
         
         return blogPosts;

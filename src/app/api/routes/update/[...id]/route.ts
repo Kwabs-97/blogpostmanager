@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { updateBlogPost } from "../../models/model";
+import { updateBlogPost } from "../../../models/model";
 
 export async function GET(request: NextRequest) {
     try {
