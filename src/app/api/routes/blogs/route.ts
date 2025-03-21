@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { getAllBlogPosts } from "../../models/model";
+import {fetchBlogPosts} from "../../models/model";
 
 export async function GET() {
     try {
-        const blogs = getAllBlogPosts();
+        const blogs = await fetchBlogPosts();
         return NextResponse.json({status: 200, body: blogs, message: "Blogs fetched successfully"});
     } catch(error){
         console.error("Error fetching blogs:", error);
