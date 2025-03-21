@@ -1,6 +1,9 @@
 import TanstackQueryClientProvider from "@/Providers/QueryClientProvider";
-export default function Home() {
+import Home from "@/components/Home";
+export default function HomePage() {
   return (
-    <TanstackQueryClientProvider></TanstackQueryClientProvider>
+    <TanstackQueryClientProvider>
+      <Home />
+    </TanstackQueryClientProvider>
   );
 }

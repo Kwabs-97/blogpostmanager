@@ -1,9 +1,9 @@
 'use client'
-import React from 'react'
+import React, { JSX } from 'react'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 
 type TanstackQueryType  = {
-    children?: React.ReactNode
+    children?: JSX.Element
 }
 const queryClient = new QueryClient;
 
