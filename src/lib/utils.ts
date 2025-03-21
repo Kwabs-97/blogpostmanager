@@ -9,7 +9,7 @@ export const fetchAllBlogs = async function() {
   try {
     const response = await fetch(`/api/routes/blogs`)
     const data = await response.json()
-    if (data) return data
+    if (data) return data.data
   } catch (error) {
     console.error("Error fetching blogs:", error);
     throw error;
