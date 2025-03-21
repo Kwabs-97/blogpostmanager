@@ -1,8 +1,6 @@
-
+import TanstackQueryClientProvider from "@/Providers/QueryClientProvider";
 export default function Home() {
   return (
-    <div className="">
-      
-    </div>
+    <TanstackQueryClientProvider></TanstackQueryClientProvider>
   );
 }
