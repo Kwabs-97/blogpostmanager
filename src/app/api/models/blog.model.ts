@@ -4,7 +4,7 @@ import { db } from "../data/db";
 const fetchBlogPosts = async () => {
     try {
         const allPosts = db.posts.findAll();
-        return allPosts;
+        return allPosts.slice(0,100);
     } catch (error) {
         console.error("Error fetching blogs:", error);
         throw error;
