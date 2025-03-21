@@ -29,7 +29,7 @@ export const fetchBlogPosts = async () => {
 };
 
 // Get all blog posts
-export const getAllBlogPosts = () => blogPosts;
+// export const getAllBlogPosts = () => blogPosts;
 
 // Add new blog post
 export const addBlogPost = (blogData: BlogFormData) => {
