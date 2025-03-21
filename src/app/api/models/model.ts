@@ -7,7 +7,22 @@ let blogPosts: Blog[] = [];
 // Fetch initial blog posts
 export const fetchBlogPosts = async () => {
     try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+            signal: controller.signal,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
         
         // Transform the data to match Blog type
@@ -23,6 +38,7 @@ export const fetchBlogPosts = async () => {
         
         return blogPosts;
     } catch (error) {
+      
         console.error("Error fetching blog posts:", error);
         throw error;
     }
