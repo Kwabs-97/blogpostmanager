@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import {fetchBlogPosts} from "../../models/model";
+import { fetchBlogPosts } from "@/app/api/models/blog.model";
 
 export async function GET() {
     try {
