@@ -3,7 +3,7 @@ import { db } from "../data/db";
 
 const fetchBlogPosts = async () => {
     try {
-        const allPosts = await db.posts.findAll();
+        const allPosts = db.posts.findAll();
         return allPosts;
     } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -13,7 +13,7 @@ const fetchBlogPosts = async () => {
 
 const createBlogPost = async (post: Blog) => {
     try {
-        const newPost = await db.posts.create(post);
+        const newPost = db.posts.create(post);
         return newPost;
     } catch (error) {
         console.error("Error creating blog post:", error);
@@ -23,7 +23,7 @@ const createBlogPost = async (post: Blog) => {
 
 const updateBlogPost = async (id: number, post: Blog) => {
     try {
-        const updatePost = await db.posts.update(id, post);
+        const updatePost = db.posts.update(id, post);
         return updatePost;
     } catch (error) {
         console.error("Error updating blog post:", error);
@@ -33,7 +33,7 @@ const updateBlogPost = async (id: number, post: Blog) => {
 
 const deleteBlogPost = async (id: number) => {
     try {
-        const deletePost = await db.posts.delete(id);
+        const deletePost = db.posts.delete(id);
         return deletePost;
     } catch (error) {
         console.error("Error deleting blog post:", error);
