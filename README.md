@@ -71,6 +71,4 @@ yarn dev
 - TypeScript 5.x
 - Node.js 20.x (types)
 
-## License
 
-This project is licensed under the MIT License.
