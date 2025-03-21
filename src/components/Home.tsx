@@ -10,11 +10,9 @@ function Home() {
             <h1>Blog App</h1>
         </header>
         <main className='h-[70%]'>
-            <AllBlogs />
+       
         </main>
-        {/* <footer>
-            <p>Blog App</p>
-        </footer> */}
+     
       </div>
     </div>
   )
