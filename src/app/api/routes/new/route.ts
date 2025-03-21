@@ -1,14 +1,14 @@
 import { NextResponse, NextRequest } from "next/server";
-import { addBlogPost } from "../../models/model";
+import { createBlogPost } from "../../models/blog.model";
 
-export async function GET(request: NextRequest) {
-const body = await request.json();
-console.log(body)
+export async function POST(request: NextRequest) {
+    const body = await request.json();
+    console.log(body)
     try {
-        // const blogs = addBlogPost();
-        return NextResponse.json({status: 200, message: "Blogs fetched successfully"});
+        const newPost = await createBlogPost(body);
+        return NextResponse.json({status: 200, body: newPost, message: "Blog post created successfully"});
     } catch(error){
-        console.error("Error fetching blogs:", error);
-        return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 });
+        console.error("Error creating blog post:", error);
+        return NextResponse.json({ error: "Failed to create blog post" }, { status: 500 });
     }
 }
